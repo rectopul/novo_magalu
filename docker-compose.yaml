@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: banese
+      POSTGRES_DB: magalu
     volumes:
       - ./database:/var/lib/postgresql/data
     ports:
