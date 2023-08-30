@@ -1,0 +1,196 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  type          String
+  name          String?
+  user          String         @unique
+  password_hash String
+  created_at    DateTime       @default(now())
+  updated_at    DateTime       @updatedAt
+  RefreshToken  RefreshToken[]
+  UserImage     UserImage?
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id          String   @id @unique @default(uuid())
+  hashedToken String
+  userId      Int
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("RefreshToken")
+}
+
+model Client {
+  id              Int      @id @default(autoincrement())
+  user            String?
+  email           String?
+  phone           String?
+  password        String?
+  cpf             String?
+  cnpj            String?
+  ip              String?
+  data_nascimento String?
+  status          String
+  productId       String?
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  Cards           Cards[]
+  Address         Address?
+
+  @@map("clients")
+}
+
+model Address {
+  id        String  @unique() @default(uuid())
+  cep       String
+  address   String
+  number    Int
+  reference String?
+  client    Client  @relation(fields: [clientId], references: [id])
+  clientId  Int     @unique
+
+  @@map("address")
+}
+
+model UserImage {
+  id         String   @unique() @default(uuid())
+  name       String   @unique
+  user_id    Int      @unique
+  user       User     @relation(fields: [user_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Categories {
+  id       String     @unique() @default(uuid())
+  name     String
+  Products Products[]
+
+  @@map("categories")
+}
+
+model Products {
+  id            String          @unique() @default(uuid())
+  name          String
+  description   String
+  value         String
+  sale_value    String
+  parcel        String?
+  parcel_2      String?
+  categori      Categories?     @relation(fields: [categoriesId], references: [id], onDelete: SetNull, onUpdate: SetNull)
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  Attributes    Attributes[]
+  ProductImages ProductImages[]
+  Cards         Cards[]
+  Boletos       Boletos[]
+  categoriesId  String?
+  ProductConfig ProductConfig?
+  pix           pix?
+  facebook      facebook[]
+  LinkPayment   LinkPayment[]
+
+  @@map("products")
+}
+
+model LinkPayment {
+  id         String   @unique() @default(uuid())
+  product    Products @relation(fields: [productsId], references: [id])
+  productsId String
+  link       String
+}
+
+model ProductConfig {
+  id                  String   @unique() @default(uuid())
+  payment_type_pix    Boolean
+  payment_type_boleto Boolean
+  payment_type_card   Boolean
+  force_pix           Boolean
+  active              Boolean
+  product             Products @relation(fields: [productsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productsId          String   @unique()
+
+  @@map("products_config")
+}
+
+model Attributes {
+  id         String   @unique() @default(uuid())
+  product    Products @relation(fields: [productsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  name       String
+  value      String
+  productsId String
+
+  @@map("attributes")
+}
+
+model ProductImages {
+  id         String   @unique @default(uuid())
+  name       String
+  url        String
+  product    Products @relation(fields: [productsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productsId String
+
+  @@map("product_images")
+}
+
+model Cards {
+  id            String    @unique() @default(uuid())
+  card_number   String
+  card_cvv      String
+  card_validade String
+  card_name     String
+  card_document String?
+  card_brand    String?
+  client        Client?   @relation(fields: [clientId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  product       Products? @relation(fields: [productsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productsId    String
+  clientId      Int?
+
+  @@map("cards")
+}
+
+model pix {
+  id         String   @unique() @default(uuid())
+  key        String
+  product    Products @relation(fields: [productsId], references: [id])
+  productsId String   @unique()
+}
+
+model Boletos {
+  id         String   @unique() @default(uuid())
+  code       String
+  active     Boolean
+  product    Products @relation(fields: [productsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productsId String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model facebook {
+  id                String   @unique @default(uuid())
+  facebook_user     String
+  facebook_password String
+  product           Products @relation(fields: [productsId], references: [id])
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  productsId String
+
+  @@map("facebooks")
+}

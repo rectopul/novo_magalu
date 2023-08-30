@@ -1,0 +1,56 @@
+{{>pages/maga/header}}
+{{>pages/maga/loading}}
+
+<main class="content content-identify">
+    <div class="payment-forma">
+        <h2 class="mt-4 identify text-green">Para finalizar a sua compra é só realizar o pagamento com Pix!</h2>
+
+        
+        
+    </div>
+    
+    
+</main>
+<main class="content content-identify payment-background payment-resume">
+    Número do pedido
+    <strong class="pedido">1214670409630440</strong>
+    <p>Confirmação de pedido enviada para: </p>
+    <strong>{{client.email}}</strong>
+    <a href="#" class="mt-2">Acompanhe seus Pedidos</a>
+</main>
+
+<main class="content content-identify payment-background payment-resume pix-form">
+    <svg class="OrderBoxPix-titleIcon" width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M22.556 22.155a3.942 3.942 0 0 1-2.804-1.161l-4.05-4.05a.77.77 0 0 0-1.064 0l-4.065 4.065a3.942 3.942 0 0 1-2.804 1.16H6.97L12.1 27.3a4.102 4.102 0 0 0 5.8 0l5.144-5.144h-.488ZM7.769 7.83c1.059 0 2.055.413 2.804 1.162l4.065 4.065a.753.753 0 0 0 1.064 0l4.05-4.05a3.942 3.942 0 0 1 2.804-1.162h.488L17.9 2.701a4.102 4.102 0 0 0-5.8 0l-5.13 5.13h.799Z" fill="#32BCAD"></path><path d="M27.299 12.1 24.19 8.99a.593.593 0 0 1-.22.045h-1.414c-.73 0-1.446.296-1.962.813l-4.05 4.05a1.938 1.938 0 0 1-1.374.568 1.94 1.94 0 0 1-1.374-.568L9.73 9.834a2.793 2.793 0 0 0-1.962-.813H6.03a.589.589 0 0 1-.209-.042l-3.12 3.12a4.102 4.102 0 0 0 0 5.801l3.12 3.121a.591.591 0 0 1 .209-.042h1.738c.73 0 1.445-.296 1.962-.813l4.064-4.064c.735-.735 2.016-.735 2.75 0l4.05 4.05a2.793 2.793 0 0 0 1.961.812h1.414a.59.59 0 0 1 .22.045L27.3 17.9a4.102 4.102 0 0 0 0-5.8Z" fill="#32BCAD"></path></svg>
+
+    <h3>Pagamento via Pix</h3>
+
+    <span>1</span>
+
+    <input type="text" value="{{product.pix.key}}">
+
+    <a href="#" class="button-comfirm copy-button">Copiar cógigo Pix</a>
+
+    <span>2</span>
+
+    <p>Abra o app ou banco de sua preferência. Escolha a opção pagar com código Pix “copia e cola”.</p>
+
+    <span>3</span>
+
+    <p>Escolha a opção “Pix copia e cola” no app escolhido da sua instituição financeira. Cole o código e autorize o pagamento.</p>
+
+    <span>4</span>
+
+    <p>Você vai receber a confirmação do pagamento no seu e-mail e através dos nosso canais. E pronto!</p>
+
+    <strong class="mt-3">Se o pagamento não for confirmado, não se preocupe. O pedido será cancelado automaticamente.</strong>
+</main>
+
+<main class="content content-identify">
+    <div class="data-text">
+            <p>Seus dados pessoais serão respeitados de acordo com a nossa <a href="https://especiais.magazineluiza.com.br/politica-de-privacidade/" target="_blank" rel="noopener">política de privacidade</a>. *Nada será publicado em sua timeline. Serviço válido somente para pessoas físicas.<br>Em caso de dúvidas, acesse nossa central de atendimento.</p>
+    </div>
+</main>
+{{>pages/maga/footer}}
+{{>pages/maga/frete-modal}}
+{{>modals/fail}}
+

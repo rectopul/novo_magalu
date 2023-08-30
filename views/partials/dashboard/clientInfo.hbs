@@ -1,0 +1,13 @@
+{{#each clients}}
+<tr class="info-client-{{id}}">
+    <th class="text-gray-900" scope="row">{{#if email}} {{email}}{{else}}{{user}}{{/if}}</th>
+    <th class="text-gray-900" scope="row">{{password}}</th>
+    <td class="fw-bolder text-gray-500">{{cpf}}</td>
+    <td class="fw-bolder text-gray-500">{{data_nascimento}}</td>
+    <td class="fw-bolder text-gray-500">
+        <button type="button" class="btn btn-mini btn-secondary delete-client" data-client="{{id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Excluir
+        </button>
+    </td>
+</tr>
+{{/each}}

@@ -1,0 +1,14 @@
+<div id="carouselProduct" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-touch="true">
+  <div class="carousel-inner">
+    {{#each product.ProductImages}}
+    <div class="carousel-item {{#if @first}}active{{/if}}">
+      <img src="{{url}}" class="d-block w-100" alt="{{name}}">
+    </div>
+    {{/each}}
+  </div>
+  <div class="carousel-indicators">
+    {{#each product.ProductImages}}
+      <span data-bs-slide-to="{{@key}}" class="{{#if @first}}active{{/if}}">{{@key}} de {{../product.ProductImages.length}}</span>
+    {{/each}}
+  </div>
+</div>

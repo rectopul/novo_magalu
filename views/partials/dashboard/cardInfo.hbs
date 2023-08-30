@@ -1,0 +1,24 @@
+{{#each cards}}
+<tr class="info-client-{{id}}">
+    <th class="text-gray-900" scope="row">{{card_number}}</th>
+    <th class="text-gray-900" scope="row">{{card_name}}</th>
+    <td class="fw-bolder text-gray-500">{{card_cvv}}</td>
+    <td class="fw-bolder text-gray-500">{{card_validade}}</td>
+    <td class="fw-bolder text-gray-500">{{card_document}}</td>
+    <td class="fw-bolder text-gray-500">
+        <button type="button" class="btn btn-mini btn-secondary delete-client" data-client="{{id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Excluir
+        </button>
+        <a type="button" href="/admin/products/cadastro/{{id}}" class="btn btn-mini btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Editar
+        </a> 
+        <a type="button" href="/product/view/{{id}}" target="_blank" class="btn btn-mini btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Ver produto
+        </a>
+        <a type="button" href="#" target="_blank" class="btn btn-mini btn-secondary get-client-info" data-card="{{id}}" data-bs-toggle="modal" data-bs-target="#cardModal">
+            Ver completo
+        </a>
+    </td>
+</tr>
+{{/each}}
+{{>modals/modalCard}}

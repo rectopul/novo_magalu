@@ -1,0 +1,43 @@
+{{>pages/maga/header}}
+{{>pages/maga/loading}}
+
+<main class="content content-identify">
+    <h2 class="mt-4 identify">Identificação</h2>
+
+    <div class="login-options">
+        <span>Use sua rede social para se conectar</span>
+        <a href="#" class="button-facebook-login" data-product="{{product.id}}">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="SocialLoginBox-button--FB"><g fill="none"><path fill="#FFF" d="M18.896 0h-17.8A1.104 1.104 0 000 1.104v17.8A1.104 1.104 0 001.104 20h9.58v-7.734h-2.6V9.238h2.6V7.01c0-2.582 1.578-3.99 3.882-3.99.778-.003 1.555.037 2.328.12v2.7h-1.588c-1.254 0-1.498.6-1.498 1.47v1.928H16.8l-.4 3.028h-2.6V20h5.096c.61 0 1.104-.494 1.104-1.104v-17.8A1.104 1.104 0 0018.896 0z"></path><path fill="#4267B2" d="M13.847 20v-7.743h2.657l.408-3.032h-3.065v-1.93c0-.875.25-1.472 1.53-1.472H17V3.12A21.796 21.796 0 0014.622 3c-2.354 0-3.966 1.402-3.966 3.995v2.23H8v3.032h2.656V20h3.191z"></path></g></svg>
+            Facebook
+        </a>
+        ou
+    </div>
+    
+    <div class="form-client-login">
+        <form class="form-client-login client-login" action="/product/register/{{product.id}}" method="POST">
+            <h3>Já sou cliente</h3>
+            <input type="text" name="email" id="login" placeholder="E-mail, CPF ou CNPJ">
+            <input type="password" name="password" id="password" placeholder="Senha">
+            <button type="submit">Continuar</button>
+            <a href="#">Esqueci minha senha</a>
+            <input type="hidden" name="productId" value="{{product.id}}">
+        </form>
+    </div>
+
+    <div class="form-client-sign-in">
+        <form class="form-client-sign-in" action="/product/register/{{product.id}}" method="POST">
+            <h3>Quero criar uma conta</h3>
+            <input type="text" name="email" placeholder="E-mail">
+            <button type="submit">Criar minha conta</button>
+        </form>
+    </div>
+
+    <div class="data-text">
+            <p>Seus dados pessoais serão respeitados de acordo com a nossa <a href="https://especiais.magazineluiza.com.br/politica-de-privacidade/" target="_blank" rel="noopener">política de privacidade</a>. *Nada será publicado em sua timeline. Serviço válido somente para pessoas físicas.<br>Em caso de dúvidas, acesse nossa central de atendimento.</p>
+    </div>
+    
+</main>
+{{>pages/maga/footer}}
+{{>pages/maga/frete-modal}}
+

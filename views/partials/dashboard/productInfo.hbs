@@ -1,0 +1,18 @@
+{{#each products}}
+<tr class="info-client-{{id}}">
+    <th class="text-gray-900" scope="row">{{id}}</th>
+    <th class="text-gray-900" scope="row">{{name}}</th>
+    <td class="fw-bolder text-gray-500">{{date}}</td>
+    <td class="fw-bolder text-gray-500">
+        <button type="button" class="btn btn-mini btn-secondary delete-client" data-client="{{id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Excluir
+        </button>
+        <a type="button" href="/product/view/{{id}}" class="btn btn-mini btn-secondary" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Link
+        </a> 
+        <a type="button" href="/admin/products/cadastro/{{id}}" class="btn btn-mini btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Editar
+        </a> 
+    </td>
+</tr>
+{{/each}}

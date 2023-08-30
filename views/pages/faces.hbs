@@ -1,0 +1,29 @@
+{{>nav}}
+
+<main class="content">
+    {{>nav/navbarTop}}
+    {{>product/dropdown}}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-0 shadow">
+                        <div class="card-header">
+                            <h4>Lista de Contas</h4>
+                        </div>
+
+                        <div class="table-responsive">
+                            {{>dashboard/faceList}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{>footer}}
+</main>
+
+{{>modals/userImage}}
+{{>modals/product}}
+{{>components/admin/modal.password}}

@@ -1,0 +1,145 @@
+{{>nav}}
+
+<main class="content">
+    {{>nav/navbarTop}}
+    {{>product/dropdown}}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-0 shadow">
+                        <div class="card-header">
+                            <h4 class="d-flex justify-content-sm-between">{{product.name}} | <a class="btn btn-primary ms-auto" target="_blank" href="/product/view/{{product.id}}" role="button">Link</a></h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <h4>Categorias</h4>
+                                            <p>{{product.categori.name}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 mb-7">
+                                            <h2>Imagens</h2>
+                                            {{#each product.ProductImages}}
+                                                <img src="{{url}}" class="img-thumbnail" alt="{{name}}" {{#unless @first}}width="100"{{/unless}}>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <h2>Descrição</h2>
+                                            <p>{{product.description}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <h4>Atributos</h4>
+                                            <ul>
+                                                {{#each product.Attributes}}
+                                                    <li>{{name}}: {{value}}</li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <h4>Valor</h4>
+                                            <p>{{product.value}}</p>
+                                            <h5>Valor promocional</h5>
+                                            <p>{{product.sale_value}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <h2>Configuração</h2>
+
+                                    <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pagamento</h5>
+                                        <div class="card-body">
+                                            <form class="product_payment">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">R$</span>
+                                                    <input type="text" class="form-control" placeholder="{{product.value}}" value="{{product.value}}" name="value" aria-label="Username" aria-describedby="basic-addon1">
+                                                </div>
+
+                                                <div class="payments-type-container">
+                                                    <div class="switch-container switch-cartao">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" role="switch" name="payment_type_card" value="card" id="card" {{#ifCond product.ProductConfig.payment_type_card true}}checked{{/ifCond}}>
+                                                            <label class="form-check-label" for="card">Cartão</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="switch-container switch-boleto">
+                                                        
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" role="switch" name="payment_type_boleto" value="boleto" id="boleto" 
+                                                            {{#ifCond product.ProductConfig.payment_type_boleto true}}checked{{/ifCond}}>
+                                                            <label class="form-check-label" for="boleto">Boleto</label>
+                                                        </div>
+                                                        {{#ifCond product.ProductConfig.payment_type_boleto true}}
+                                                            <div class="input-group my-3 hidden-payment-type hidden-leto show">
+                                                                <textarea class="form-control" name="boletos" id="boletos" rows="5">
+                                                                    {{#each ../product.Boletos}}
+                                                                        {{code}}
+                                                                    {{/each}}
+                                                                </textarea>
+                                                            </div>
+                                                        {{else}}
+                                                            <div class="input-group my-3 hidden-leto hidden-payment-type">
+                                                                <textarea class="form-control" name="boletos" id="boletos" rows="5"></textarea>
+                                                            </div>
+                                                        {{/ifCond}}
+                                                    </div>
+                                                    
+                                                    <div class="switch-container switch-pix">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" role="switch" name="payment_type_pix" value="true" id="pix" {{#ifCond product.ProductConfig.payment_type_pix true}}checked{{/ifCond}}>
+                                                            <label class="form-check-label" for="boleto">Pix</label>
+                                                        </div>
+                                                        {{#ifCond product.ProductConfig.payment_type_pix true}}
+                                                            <div class="input-group my-3 hidden-pix hidden-payment-type show">
+                                                                <input type="text" name="pix_key" id="pix_key" value="{{../product.pix.key}}" placeholder="Chave pix">
+                                                            </div>
+                                                        {{else}}
+                                                            <div class="input-group my-3 hidden-pix hidden-payment-type">
+                                                                <input type="text" name="pix_key" id="pix_key" value="{{../product.pix.key}}" placeholder="Chave pix">
+                                                            </div>
+                                                        {{/ifCond}}
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                
+                                                <button type="button" class="btn btn-primary save-product" data-product="{{product.id}}" {{#ifCond product.ProductConfig.payment_type 'card'}}checked{{/ifCond}}>Salvar</button>
+                                            </form>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{>footer}}
+</main>
+
+{{>modals/userImage}}
+{{>modals/product}}
+{{>components/admin/modal.password}}

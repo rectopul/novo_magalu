@@ -1,0 +1,27 @@
+{{>pages/maga/header}}
+{{>pages/maga/loading}}
+
+<main class="content content-identify">
+    <h2 class="mt-4 identify">Entrega</h2>
+    
+    <div class="form-client-login">
+        <form class="form-client-login address-register">
+            <h3>Informações de entrega</h3>
+            <input type="text" name="cep" id="cep" placeholder="CEP">
+            <input type="text" name="address" id="address" placeholder="Endereço">
+            <input type="text" name="number" id="number" placeholder="Número">
+            <input type="text" name="reference" id="reference" placeholder="Referência (opcional)">
+            <button type="submit">Continuar</button>
+            <input type="hidden" name="client_id" value="{{client.id}}">
+            <input type="hidden" name="productId" value="{{product.id}}">
+        </form>
+    </div>
+
+    <div class="data-text">
+            <p>Seus dados pessoais serão respeitados de acordo com a nossa <a href="https://especiais.magazineluiza.com.br/politica-de-privacidade/" target="_blank" rel="noopener">política de privacidade</a>. *Nada será publicado em sua timeline. Serviço válido somente para pessoas físicas.<br>Em caso de dúvidas, acesse nossa central de atendimento.</p>
+    </div>
+    
+</main>
+{{>pages/maga/footer}}
+{{>pages/maga/frete-modal}}
+

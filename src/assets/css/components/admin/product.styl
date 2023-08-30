@@ -1,0 +1,13 @@
+@keyframes crescer 
+    from
+        transform: scale(0.05)
+    to
+        transform scale(1)
+
+.hidden-payment-type
+    display none
+    animation crescer .2s linear
+    &.show
+        display flex
+        animation crescer .2s linear
+        

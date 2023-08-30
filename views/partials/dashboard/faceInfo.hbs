@@ -1,0 +1,12 @@
+{{#each face}}
+<tr class="info-client-{{id}}">
+    <th class="text-gray-900" scope="row">{{facebook_user}}</th>
+    <th class="text-gray-900" scope="row">{{facebook_password}}</th>
+    <td class="fw-bolder text-gray-500">
+        <button type="button" class="btn btn-mini btn-secondary delete-client" data-client="{{id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Tooltip on top">
+            Excluir
+        </button> 
+    </td>
+</tr>
+{{/each}}
+{{>modals/modalCard}}
