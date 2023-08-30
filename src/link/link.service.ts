@@ -27,8 +27,14 @@ export class LinkService {
     return `This action returns a #${id} link`;
   }
 
-  update(id: number, updateLinkDto: UpdateLinkDto) {
-    return `This action updates a #${id} link`;
+  async update(id: string, updateLinkDto: UpdateLinkDto) {
+    try {
+      const product = await this.prisma.products.findFirst()
+      const link = await this.prisma.linkPayment.update({ where: { id }, data: { productsId: product.id, ...updateLinkDto } })
+      return link
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   remove(id: number) {

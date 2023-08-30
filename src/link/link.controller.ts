@@ -24,7 +24,7 @@ export class LinkController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateLinkDto: UpdateLinkDto) {
-    return this.linkService.update(+id, updateLinkDto);
+    return this.linkService.update(id, updateLinkDto);
   }
 
   @Delete(':id')
